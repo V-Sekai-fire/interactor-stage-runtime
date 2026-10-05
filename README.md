@@ -1,21 +1,19 @@
-# fabric-stage-runtime
+# interactor-stage-runtime
 
-Special thanks to the origin of this project: https://github.com/Immersive-Data-Center-Management/idtx-flow.
+A prebuilt USD scene-description runtime per platform triplet, shipped as the `stage_runtime` Mix package.
 
-An OpenUSD runtime shipped as an Elixir/Hex package for ports, adapters and Elixir consumers.
+## Use
 
-To build from source set `OPENUSD_BUILD=true` before `mix compile` to build OpenUSD locally.
+A port, adapter or Elixir consumer adds `stage_runtime` as a dependency and asks `StageRuntime` for the include directory, library directory and target triplet to build against. The project began from [idtx-flow](https://github.com/Immersive-Data-Center-Management/idtx-flow).
 
-## Usage
+## Build and run
 
-```elixir
-def deps do
-  [{:stage_runtime, "~> 0.1.0-dev"}]
-end
+On first use the package downloads and verifies the prebuilt archive that matches its version and the host. To build the runtime from source instead:
+
+```sh
+OPENUSD_BUILD=true mix compile
 ```
 
-```elixir
-StageRuntime.include_dir()  #=> ".../openusd-26.05-<triplet>/include"
-StageRuntime.lib_dir()      #=> ".../openusd-26.05-<triplet>/lib"  (contains usd_ms)
-StageRuntime.target()       #=> "x86_64-linux-gnu" | "aarch64-apple-darwin" | "x86_64-windows-msvc"
-```
+## Licence
+
+Apache-2.0. See `LICENSE`.
