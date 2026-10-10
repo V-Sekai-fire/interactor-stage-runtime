@@ -17,6 +17,9 @@ env:
     OTP_VERSION: '27'
     ELIXIR_VERSION: '1.18'
 
+permissions:
+  contents: write
+
 jobs:
     build:
         name: ${{ matrix.target }}
